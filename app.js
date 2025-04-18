@@ -92,3 +92,34 @@ window.deleteProduct = async function (id, imageName) {
 
 // Page Load
 window.onload = loadProducts;
+// Product display korar function
+function showAllProducts() {
+  const productsDiv = document.getElementById('products');
+  productsDiv.innerHTML = ""; // Purono data clear
+
+  db.collection("products").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+
+      const productCard = document.createElement('div');
+      productCard.style.border = "1px solid #ccc";
+      productCard.style.padding = "10px";
+      productCard.style.margin = "10px";
+      productCard.style.borderRadius = "10px";
+      productCard.style.boxShadow = "2px 2px 10px rgba(0,0,0,0.1)";
+      productCard.style.maxWidth = "250px";
+
+      productCard.innerHTML = `
+        <h3>${data.Name}</h3>
+        <p><strong>Price:</strong> ${data.Price} টাকা</p>
+        <p><strong>Description:</strong> ${data.Description}</p>
+        <img src="${data.ImageURL}" alt="${data.Name}" width="100%">
+      `;
+
+      productsDiv.appendChild(productCard);
+    });
+  });
+}
+
+// Upload er por o auto reload er moto show korte chaile:
+showAllProducts();
