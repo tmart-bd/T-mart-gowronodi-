@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>T Mart Gowronodi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>T Mart Gowronodi</h1>
+
+  <!-- Product Upload Form -->
+  <section id="upload-section">
+    <h2>নতুন পণ্য যুক্ত করুন</h2>
+    <form id="productForm">
+      <input type="file" id="productImage" accept="image/*" required><br>
+      <input type="text" id="productName" placeholder="পণ্যের নাম" required><br>
+      <input type="number" id="productPrice" placeholder="পণ্যের দাম" required><br>
+      <textarea id="productDescription" placeholder="বর্ণনা লিখুন" required></textarea><br>
+      <button type="submit">আপলোড করুন</button>
+    </form>
+  </section>
+
+  <!-- Product Display Section -->
+  <section id="product-list">
+    <h2>সকল পণ্য</h2>
+    <div id="productsContainer"></div>
+  </section>
+
+  <!-- Firebase JS SDK -->
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
