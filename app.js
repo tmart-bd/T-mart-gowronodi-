@@ -95,6 +95,8 @@ window.onload = loadProducts;
 // Product display korar function
 function showAllProducts() {
   const productsDiv = document.getElementById('products');
+function showAllProducts() {
+  const productsDiv = document.getElementById('products');
   productsDiv.innerHTML = ""; // Purono data clear
 
   db.collection("products").get().then((querySnapshot) => {
@@ -110,16 +112,15 @@ function showAllProducts() {
       productCard.style.maxWidth = "250px";
 
       productCard.innerHTML = `
-        <h3>${data.Name}</h3>
-        <p><strong>Price:</strong> ${data.Price} টাকা</p>
-        <p><strong>Description:</strong> ${data.Description}</p>
-        <img src="${data.ImageURL}" alt="${data.Name}" width="100%">
+        <h3>${data.name}</h3>
+        <p><strong>Price:</strong> ${data.price} টাকা</p>
+        <p><strong>Description:</strong> ${data.description}</p>
+        <img src="${data.imageUrl}" alt="${data.name}" width="100%">
       `;
 
       productsDiv.appendChild(productCard);
     });
   });
 }
-
 // Upload er por o auto reload er moto show korte chaile:
 showAllProducts();
